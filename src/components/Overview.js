@@ -1,18 +1,15 @@
 import React, { Component } from 'react';
+import Task from './Task';
 
 class Overview extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { taskList } = this.props;
 
     return (
       <div>
         <ul>
-          {taskList.map((task) => {
-            return <li key={task.id}>{task.text}</li>;
+          {taskList.map((task, i) => {
+            return <Task key={i} task={task} />;
           })}
         </ul>
       </div>
