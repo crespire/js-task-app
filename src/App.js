@@ -6,8 +6,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      taskList: new Array,
-      new_task: ''
+      taskList: [],
+      new_task: { text: '' }
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -19,17 +19,22 @@ class App extends Component {
   }
 
   handleSubmit(event) {
-    console.log('Submitted: ' + this.state.new_task);
     event.preventDefault();
+    this.setState({
+      taskList: this.state.taskList.push(this.state.task),
+      new_task: { text: '' },
+    })
   }
 
   render() {
+    const { taskList, new_task } = this.state;
+
     return (
       <div className="App">
         <form onSubmit={this.handleSubmit}>
           <label htmlFor='new-task'>Task: </label>
-          <input type="text" id='new-task' value={this.state.new_task} onChange={this.handleChange} required />
-          <input type='submit' onClick={this.addTask} value='Add!' />
+          <input type="text" id='new-task' />
+          <input type='submit' value='Add!' />
         </form>
         <Overview taskList={this.state.taskList} />
       </div>
