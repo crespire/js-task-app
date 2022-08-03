@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 class Task extends Component {
   render() {
-    const { task } = this.props;
+    const { order, task } = this.props;
 
     return (
-      <li key={task.id}>{task.text}</li>
+      <li key={task.id}>{order}: {task.text}</li>
     );
   }
 }

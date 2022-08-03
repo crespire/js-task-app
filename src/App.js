@@ -19,7 +19,7 @@ class App extends Component {
     this.setState({
       new_task: { 
         text: event.target.value,
-        id: this.state.taskList.id,
+        id: this.state.new_task.id,
       }
     });
   }
