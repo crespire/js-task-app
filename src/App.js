@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Overview from './components/Overview';
+import uniqid from 'uniqid';
 
 class App extends Component {
   constructor(props) {
@@ -15,14 +16,22 @@ class App extends Component {
   }
 
   handleChange(event) {
-    this.setState({new_task: event.target.value});
+    this.setState({
+      new_task: { 
+        text: event.target.value,
+        id: this.state.taskList.id,
+      }
+    });
   }
 
   handleSubmit(event) {
     event.preventDefault();
     this.setState({
-      taskList: this.state.taskList.push(this.state.task),
-      new_task: { text: '' },
+      taskList: this.state.taskList.concat(this.state.new_task),
+      new_task: {
+        text: '',
+        id: uniqid()
+      },
     })
   }
 
@@ -33,10 +42,10 @@ class App extends Component {
       <div className="App">
         <form onSubmit={this.handleSubmit}>
           <label htmlFor='new-task'>Task: </label>
-          <input type="text" id='new-task' />
+          <input type="text" id='new-task' value={new_task.text} onChange={this.handleChange} />
           <input type='submit' value='Add!' />
         </form>
-        <Overview taskList={this.state.taskList} />
+        <Overview taskList={taskList} />
       </div>
     );
   }
