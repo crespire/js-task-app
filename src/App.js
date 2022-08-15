@@ -13,7 +13,7 @@ class App extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.HandleDelete = this.handleDelete.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleChange(event) {
@@ -38,12 +38,10 @@ class App extends Component {
 
   handleDelete = (event, id) => {
     event.preventDefault();
-    console.log('ID:', id);
-    console.log('Deleting:',this.state.taskList[id-1]);
     this.setState({
       taskList: this.state.taskList.filter((task, index) => {return index !== (id - 1)}),
     });
-  }
+  };
 
   render() {
     const { taskList, new_task } = this.state;
