@@ -13,6 +13,7 @@ class App extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.HandleDelete = this.handleDelete.bind(this);
   }
 
   handleChange(event) {
@@ -33,6 +34,15 @@ class App extends Component {
         id: uniqid()
       },
     })
+  };
+
+  handleDelete = (event, id) => {
+    event.preventDefault();
+    console.log('ID:', id);
+    console.log('Deleting:',this.state.taskList[id-1]);
+    this.setState({
+      taskList: this.state.taskList.filter((task, index) => {return index !== (id - 1)}),
+    });
   }
 
   render() {
@@ -45,7 +55,7 @@ class App extends Component {
           <input type="text" id='new-task' value={new_task.text} onChange={this.handleChange} />
           <input type='submit' value='Add!' />
         </form>
-        <Overview taskList={taskList} />
+        <Overview taskList={taskList} handleDelete={this.handleDelete} />
       </div>
     );
   }

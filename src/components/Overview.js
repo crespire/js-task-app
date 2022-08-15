@@ -3,13 +3,13 @@ import Task from './Task';
 
 class Overview extends Component {
   render() {
-    const { taskList } = this.props;
+    const { taskList, handleDelete } = this.props;
 
     return (
       <div>
         <ul>
           {taskList.map((task, i) => {
-            return <Task key={i+1} order={i+1} task={task} />;
+            return <Task key={i+1} order={i+1} task={task} handleDelete={handleDelete} />;
           })}
         </ul>
       </div>
