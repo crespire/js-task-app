@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Task extends Component {
+class TaskEditControl extends Component {
   render() {
     const { order, index, task, handleDelete } = this.props;
 
@@ -10,4 +10,4 @@ class Task extends Component {
   }
 }
 
-export default Task;
+export default TaskEditControl;

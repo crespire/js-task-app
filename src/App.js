@@ -8,12 +8,18 @@ class App extends Component {
 
     this.state = {
       taskList: [],
-      new_task: { text: '' }
+      new_task: { text: '' },
+      edit_task: { text: '' },
+      editing: false,
+      edit_id: ''
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.toggleEditMode = this.toggleEditMode.bind(this);
+    this.handleEditChange = this.handleEditChange.bind(this);
+    this.handleEditSubmit = this.handleEditSubmit.bind(this);
   }
 
   handleChange(event) {
@@ -39,8 +45,37 @@ class App extends Component {
   handleDelete = (event, id) => {
     event.preventDefault();
     this.setState({
-      taskList: this.state.taskList.filter((task, index) => {return index !== (id - 1)}),
+      taskList: this.state.taskList.filter((task, index) => {return index !== (id)}),
     });
+  };
+
+  toggleEditMode = (id) => {
+    this.setState({
+      editing: this.state.editing === false ? true : false,
+      edit_id: id
+    })
+  }
+
+  handleEditChange = (event) => {
+    this.setState({
+      edit_task: { 
+        text: event.target.value,
+        id: this.state.edit_task.id,
+      }
+    });
+  }
+
+  handleEditSubmit = (event, index) => {
+    event.preventDefault();
+    this.setState({
+      taskList: this.state.taskList.splice(index, 1, this.state.edit_task),
+      edit_task: {
+        text: '',
+        id: ''
+      },
+      editing: false,
+      edit_id: ''
+    })
   };
 
   render() {
@@ -53,7 +88,7 @@ class App extends Component {
           <input type="text" id='new-task' value={new_task.text} onChange={this.handleChange} />
           <input type='submit' value='Add!' />
         </form>
-        <Overview taskList={taskList} handleDelete={this.handleDelete} />
+        <Overview taskList={taskList} handleDelete={this.handleDelete} toggleEditMode={this.toggleEditMode} handleEditChange={this.handleEditChange} handleEditSubmit={this.handleEditSubmit} />
       </div>
     );
   }
