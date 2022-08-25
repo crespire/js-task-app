@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 class Task extends Component {
   render() {
-    const { order, index, task, handleDelete } = this.props;
+    const { order, task, handleDelete } = this.props;
 
     return (
-      <li>{order}: {task.text} <button onClick={(event) => { handleDelete(event, index); }}>Delete</button></li>
+      <li>{order}: {task.text} <button onClick={(event) => { handleDelete(event, order); }}>Delete</button></li>
     );
   }
 }
