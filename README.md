@@ -1,2 +1,2 @@
 # Task App
-Simple React application to practice utilizing state and class components.
+Simple React application to practice utilizing state.
