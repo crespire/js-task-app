@@ -18,6 +18,33 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleEditChanges = this.handleEditChanges.bind(this);
+    this.handleEditSubmit = this.handleEditSubmit.bind(this);
+    this.toggleEdit = this.toggleEdit.bind(this);
+  }
+
+  handleEditChanges(event, taskID) {
+    this.setState({
+      edit_task: {
+        text: event.target.value,
+        id: taskID
+      }
+    })
+  }
+
+  handleEditSubmit(event, changeID) {
+    event.preventDefault();
+    this.setState({
+        taskList: this.state.taskList.map(task => task.id === changeID ? this.state.edit_task : task)
+      })
+  }
+
+  toggleEdit(event, taskID) {
+    event.preventDefault();
+    this.setState({
+      editMode: true,
+      editID: taskID
+    })
   }
 
   handleChange(event) {
