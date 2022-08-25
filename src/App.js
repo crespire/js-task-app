@@ -18,12 +18,12 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
-    this.handleEditChanges = this.handleEditChanges.bind(this);
+    this.handleEditChange = this.handleEditChange.bind(this);
     this.handleEditSubmit = this.handleEditSubmit.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
   }
 
-  handleEditChanges(event, taskID) {
+  handleEditChange(event, taskID) {
     this.setState({
       edit_task: {
         text: event.target.value,
@@ -75,7 +75,7 @@ class App extends Component {
   };
 
   render() {
-    const { taskList, new_task } = this.state;
+    const { taskList, new_task, edit_task, editMode, editID } = this.state;
 
     return (
       <div className="App">
@@ -84,7 +84,7 @@ class App extends Component {
           <input type="text" id='new-task' value={new_task.text} onChange={this.handleChange} />
           <input type='submit' value='Add!' />
         </form>
-        <Overview taskList={taskList} handleDelete={this.handleDelete} />
+        <Overview taskList={taskList} editMode={editMode} editID={editID} handleDelete={this.handleDelete} toggleEdit={this.toggleEdit} handleEditChange={this.handleEditChange} handleEditSubmit={this.handleEditSubmit} />
       </div>
     );
   }
