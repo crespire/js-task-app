@@ -8,7 +8,11 @@ class App extends Component {
 
     this.state = {
       taskList: [],
-      new_task: { text: '', id: uniqid() }
+      new_task: { text: '', id: uniqid() },
+      edit_task: { text: '', id: '' },
+      editMode: false,
+      editID: '',
+
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -36,7 +40,7 @@ class App extends Component {
     })
   };
 
-  handleDelete = (event, deleteID) => {
+  handleDelete(event, deleteID) {
     event.preventDefault();
     this.setState({
       taskList: this.state.taskList.filter((task) => {return task.id !== deleteID }),
