@@ -9,11 +9,6 @@ class Overview extends Component {
       <div>
         <ul>
           {taskList.map((task, i) => {
-            if (editingMode && edit_id == i) {
-              // Send TaskEditControl the relevant props
-            } else {
-              // Send TaskEditControl the relevant props
-            }
             return <Task key={i+1} order={i+1} index={i} task={task} handleDelete={handleDelete} />;
           })}
         </ul>
