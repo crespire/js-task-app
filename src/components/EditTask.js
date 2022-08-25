@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 
 class Task extends Component {
   render() {
-    const { task, handleEditChange, handleEditSubmit } = this.props;
+    const { task, editTask, handleEditChange, handleEditSubmit } = this.props;
 
     return (
       <li>
-        <input type='text' value={task.text} onChange={handleEditChange(task.id)} />
+        <input type='text' value={editTask.text} onChange={(event) => handleEditChange(event, editTask.id)} />
         <button disabled={true}>Delete</button>
-        <button onClick={handleEditSubmit(task.id)}>Change</button>
+        <button onClick={(event) => handleEditSubmit(event, task.id)}>Change</button>
       </li>
     );
   }

@@ -6,9 +6,9 @@ class Task extends Component {
 
     return (
       <li>
-        {order}: {task.text}
+        {order}: {task.text}&nbsp;&#10233;&nbsp;
         <button onClick={(event) => { handleDelete(event, task.id); }}>Delete</button>
-        <button onClick={(event) => { toggleEdit(event, task.id)}}>Edit</button>;
+        <button onClick={(event) => { toggleEdit(event, task.id)}}>Edit</button>
       </li>
     );
   }
