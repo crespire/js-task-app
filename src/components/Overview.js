@@ -9,7 +9,7 @@ class Overview extends Component {
       <div>
         <ul>
           {taskList.map((task, i) => {
-            if (editingMode && edit_id == i) {
+            if (editingMode && edit_id === i) {
               // Send TaskEditControl the relevant props
             } else {
               // Send TaskEditControl the relevant props
