@@ -9,7 +9,7 @@ class Overview extends Component {
       <div>
         <ul>
           {taskList.map((task, i) => {
-            return <Task key={i+1} order={i+1} task={task} handleDelete={handleDelete} />;
+            return <Task key={task.id} order={i+1} task={task} handleDelete={handleDelete} />;
           })}
         </ul>
       </div>

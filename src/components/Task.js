@@ -5,7 +5,7 @@ class Task extends Component {
     const { order, task, handleDelete } = this.props;
 
     return (
-      <li>{order}: {task.text} <button onClick={(event) => { handleDelete(event, order); }}>Delete</button></li>
+      <li>{order}: {task.text} <button onClick={(event) => { handleDelete(event, task.id); }}>Delete</button></li>
     );
   }
 }

@@ -8,7 +8,7 @@ class App extends Component {
 
     this.state = {
       taskList: [],
-      new_task: { text: '' }
+      new_task: { text: '', id: uniqid() }
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -36,10 +36,10 @@ class App extends Component {
     })
   };
 
-  handleDelete = (event, id) => {
+  handleDelete = (event, deleteID) => {
     event.preventDefault();
     this.setState({
-      taskList: this.state.taskList.filter((task, index) => {return index !== (id - 1)}),
+      taskList: this.state.taskList.filter((task) => {return task.id !== deleteID }),
     });
   };
 
