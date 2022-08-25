@@ -79,7 +79,7 @@ class App extends Component {
   };
 
   render() {
-    const { taskList, new_task, edit_task, editing, edit_id } = this.state;
+    const { taskList, new_task } = this.state;
 
     return (
       <div className="App">
@@ -88,7 +88,7 @@ class App extends Component {
           <input type="text" id='new-task' value={new_task.text} onChange={this.handleChange} />
           <input type='submit' value='Add!' />
         </form>
-        <Overview taskList={taskList} editTask={edit_task} editingMode={editing} edit_id={edit_id} handleDelete={this.handleDelete} toggleEditMode={this.toggleEditMode} handleEditChange={this.handleEditChange} handleEditSubmit={this.handleEditSubmit} />
+        <Overview taskList={taskList} handleDelete={this.handleDelete} toggleEditMode={this.toggleEditMode} handleEditChange={this.handleEditChange} handleEditSubmit={this.handleEditSubmit} />
       </div>
     );
   }

@@ -3,7 +3,7 @@ import Task from './Task';
 
 class Overview extends Component {
   render() {
-    const { taskList, editTask, editingMode, edit_id, handleDelete, toggleEditMode, handleEditChange, handleEditSubmit } = this.props;
+    const { taskList, handleDelete, toggleEditMode, handleEditChange, handleEditSubmit } = this.props;
 
     return (
       <div>
