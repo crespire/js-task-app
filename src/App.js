@@ -35,7 +35,13 @@ class App extends Component {
   handleEditSubmit(event, changeID) {
     event.preventDefault();
     this.setState({
-        taskList: this.state.taskList.map(task => task.id === changeID ? this.state.edit_task : task)
+        taskList: this.state.taskList.map(task => task.id === changeID ? this.state.edit_task : task),
+        editID: '',
+        editMode: false,
+        edit_task: {
+          text: '',
+          id: ''
+        }
       })
   }
 
@@ -43,7 +49,8 @@ class App extends Component {
     event.preventDefault();
     this.setState({
       editMode: true,
-      editID: taskID
+      editID: taskID,
+      edit_task: this.state.taskList.find((task) => task.id === taskID)
     })
   }
 
@@ -84,7 +91,7 @@ class App extends Component {
           <input type="text" id='new-task' value={new_task.text} onChange={this.handleChange} />
           <input type='submit' value='Add!' />
         </form>
-        <Overview taskList={taskList} editMode={editMode} editID={editID} handleDelete={this.handleDelete} toggleEdit={this.toggleEdit} handleEditChange={this.handleEditChange} handleEditSubmit={this.handleEditSubmit} />
+        <Overview taskList={taskList} editMode={editMode} editID={editID} editTask={edit_task} handleDelete={this.handleDelete} toggleEdit={this.toggleEdit} handleEditChange={this.handleEditChange} handleEditSubmit={this.handleEditSubmit} />
       </div>
     );
   }
